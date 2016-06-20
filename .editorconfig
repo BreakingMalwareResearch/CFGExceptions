@@ -1,0 +1,7 @@
+root = true
+
+# Matches multiple files with brace expansion notation
+[*.{cpp,c,h}]
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = true
