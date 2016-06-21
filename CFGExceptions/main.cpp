@@ -258,6 +258,7 @@ ESTATUS AddCfgExceptionUndocumentedApi(HANDLE hProcess, PVOID pvAddress)
 		goto lblCleanup;
 	}
 
+	// Get memory allocation base and region size by calling VirtualProtect.
 	eReturn = GetMemoryAllocationBaseAndRegionSize(
 		pvAddress, 
 		&pvAllocationBase, 
@@ -287,7 +288,7 @@ ESTATUS AddCfgExceptionUndocumentedApi(HANDLE hProcess, PVOID pvAddress)
 		&tVmInformation, 
 		0x10
 		);
-	if (0 != ntStatus)
+	if (STATUS_SUCCESS != ntStatus)
 	{
 		eReturn = ESTATUS_ADDCFGEXCEPTIONUNDOCUMENTEDAPI_NTSETINFORMATIONVIRTUALMEMORY_FAILED;
 		goto lblCleanup;
@@ -320,6 +321,7 @@ ESTATUS AddCfgExceptionDocumentedApi(HANDLE hProcess, PVOID pvAddress)
 		goto lblCleanup;
 	}
 
+	// Get memory allocation base and region size by calling VirtualProtect.
 	eReturn = GetMemoryAllocationBaseAndRegionSize(
 		pvAddress, 
 		&pvAllocationBase, 
