@@ -98,7 +98,7 @@ ESTATUS GetFunctionAddressFromDll(
 	}
 
 	pvFunctionAddress = GetProcAddress(hModule, pszFunctionName);
-	if (NULL == hModule)
+	if (NULL == pvFunctionAddress)
 	{
 		eReturn = ESTATUS_GETFUNCTIONADDRESSFROMDLL_GETPROCADDRESS_FAILED;
 		goto lblCleanup;
